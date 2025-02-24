@@ -2,7 +2,7 @@
 title: "Final Proposal"
 author: "Emma Jay"
 date: "`r Sys.Date()`"
-output: github_document
+output: html_document
 ---
 
 ```{r setup}
@@ -72,6 +72,7 @@ head(coffee_data_clean)
 
 ```
 ### Description of Data
+This data set comes from World Champion Barista James Hoffmann and coffee company Cometeer, who in 2023, collected survey responses corresponding to around 5000 taste testing kits distributed across the country about coffee preferences. I downloaded the [data from Kaggle](https://www.kaggle.com/datasets/umerhaddii/the-great-american-coffee-taste-test-dataset). 
 
 ## Research Question
 Are there significant differences in economic coffee consumption patterns between individuals of different political affiliations within the same education or ethnic group?
@@ -94,6 +95,7 @@ ggplotly(cups_poli_edu)
 ```
 
 ### Discussion of Graph 1 (200 words)
+To create the above graph, I converted the cups variable from a character variable to a numeric by taking the median value of each subset of the data. I then chose to plot it in a box plot faceted across educational attainment and used color to show the distributions of coffee consumption daily by political affiliation. I think a lot can still be done to work on this graph, including improving color choice and reevaluating the labels on the x-axis. I think overall spacing is a struggle at the moment due to the wordy category types that I will need to address moving forward. 
 
 ## Draft Graph 2
 ```{r cafe value politic ethnicity}
@@ -147,7 +149,9 @@ ggplot(coffee_data_clean, aes(
   ) 
 ```
 
-### Discussion of Graphs 2 - 3
-Along with these graphs, I would like to create a Shiny Dashboard that would allow a viewer to select specific education levels or ethnic groups that would update visualizations to be able to further explore the visualizations above. I explored this type of dashboard in Tableau, and I really enjoyed the interactive element it incorporated into the dashboard so I would like to incorporate something similar into my final project through Shiny. 
+### Discussion of Graphs 2 - 3 and Expansion
+I think in regards to the draft graphs 2 and 3, I need to figure out better spacing or text size for the x-axis as the current format is very difficult to read. I like the idea of faceting these graphs across political affiliation or ethnic group, but I think when I consider their placement into a dashboard, I will need to think more critically about having multiple faceted visualizations and potentially look to visualize in such a way that does not need to be faceted or accounts for the interaction of the user as a means of separating out the interactions expressed by faceting above. Further graphs will definetly explore other economic related variables, as I am really interested in pulling out trends related to political affiliation, ethnicity, education and the idea of value or willingness to pay for coffee products.
 
-I think in regards to the draft graphs 2 and 3, I need to figure out better spacing or text size for the x-axis as the current format is very difficult to read. I like the idea of faceting these graphs across political affiliation or ethnic group, but I think when I consider their placement into a dashboard, I will need to think more critically about having multiple faceted visualizations and potentially look to visualize in such a way that does not need to be faceted or accounts for the interaction of the user as a means of separating out the interactions expressed by faceting above. Further graphs will definetly explore other economic related variables, as I am really interested in pulling out trends related to political affiliation, ethnicity, education and the idea of value or willingness to pay for coffee products.  
+Along with these graphs, I would like to create a Shiny Dashboard that would allow a viewer to select specific education levels or ethnic groups that would update visualizations to be able to further explore the visualizations above. I explored this type of dashboard in Tableau, and I really enjoyed the interactive element it incorporated into the dashboard so I would like to incorporate something similar into my final project through Shiny. Ideally, there will be 4-5 different visualizations and potentially a chart on the interactive dashboard. 
+
+  
