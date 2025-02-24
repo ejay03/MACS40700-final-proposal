@@ -7,6 +7,7 @@ output: github_document
 
 ```{r setup}
 library(tidyverse)
+library(plotly)
 
 # set default theme for ggplot2
 ggplot2::theme_set(ggplot2::theme_minimal(base_size = 16))
@@ -41,13 +42,22 @@ coffee_data_clean <- coffee_data_clean %>%
                   ethnicity_race, 
                   gender, 
                   employment_status,
-                  age,
-                  cups),
+                  age),
                 ~factor(.))) %>%
   mutate(
     brew = str_to_lower(brew),
-    where_drink = str_to_lower(where_drink))
+    where_drink = str_to_lower(where_drink)) %>%
+  mutate(cup_num = case_when(
+    cups == "Less than 1" ~ 0,
+    cups == "1" ~ 1,
+    cups == "2" ~ 2,
+    cups == "3" ~ 3,
+    cups == "More than 4" ~ 5,
+    cups == "4" ~ 4,
+    TRUE ~ NA_real_
+  ))
 
+distinct(raw_coffee_data, cups)
 # remove predominately NA columns
 prop_missing <- sapply(coffee_data_clean, function(x) mean(is.na(x)))
 print(prop_missing)
@@ -57,22 +67,57 @@ coffee_data_clean <- coffee_data_clean %>%
 # check dataset
 str(coffee_data_clean)
 head(coffee_data_clean)
+
 ```
 ### Description of Data
 
 ## Research Question
-Are there significant differences in coffee consumption patterns between individuals of different political affiliations within the same education or ethnic group?
+Are there significant differences in economic coffee consumption patterns between individuals of different political affiliations within the same education or ethnic group?
 
 ## Graph 1
-```{r graph 1}
+```{r graph 1 - cups political and education}
+cups_poli_edu <- ggplot(coffee_data_clean, aes(
+  x = political_affiliation, 
+  y = cup_num, 
+  fill = political_affiliation)) +
+  geom_boxplot() +
+  facet_wrap(~ education_level) +
+  labs(title = "Coffee Cups by Political Affiliation and Education Level",
+       x = "Political Affiliation",
+       y = "Cups of Coffee per Day",
+       fill = "Political Affiliation") +
+  theme_minimal()
 
+ggplotly(cups_poli_edu)
 ```
 
 ### Discussion of Graph 1 (200 words)
 
 ## Draft Graph 2
+```{r cafe value politic ethnicity}
+ggplot(coffee_data_clean, aes(x = value_cafe, fill = political_affiliation)) +
+  geom_bar(position = "dodge") +
+  facet_wrap(~ ethnicity_race) +
+  labs(title = "Cafe Value for Money by Political Affiliation and Ethnicity",
+       x = "Value for Money at Cafe",
+       y = "Count",
+       fill = "Political Affiliation")
+```
 
 ## Draft Graph 3
+```{r }
+distinct(coffee_data_clean, most_willing)
+
+ggplot(coffee_data_clean, aes(x = most_willing, fill = education_level)) +
+  geom_bar(position = "dodge") +
+  facet_wrap(~ political_affiliation) +
+  labs(
+    title = "Most Willing to Pay for a Cup of Coffee by Political Affiliation",
+    x = "Most Willing Price Range",
+    y = "Count",
+    fill = "Education Level"
+  ) 
+```
 
 ## Draft Graph 4
 

@@ -1,9 +1,9 @@
-# MACS40700-final-proposal
+# MACS40700 Final Proposal
 A repository containing my proposal for my final project in MACS40700. 
 
-## Data Description
+### Data Description
 
-## Variables
+### Variables
 
   * __submission_id =__ Submission ID
   * __age =__ What is your age?
@@ -23,42 +23,42 @@ A repository containing my proposal for my final project in MACS40700.
   * __-strength =__ How strong do you like your coffee?
   * __roast_level =__ What roast level of coffee do you prefer?
   * __caffeine =__ How much caffeine do you like in your coffee?
-  __expertise =__ Lastly, how would you rate your own coffee expertise?
-  __coffee_a_bitterness =__ Coffee A - Bitterness
-  __coffee_a_acidity =__ Coffee A - Acidity
-  __coffee_a_personal_preference =__ Coffee A - Personal Preference
-  __coffee_a_notes =__ Coffee A - Notes
-  __coffee_b_bitterness =__ Coffee B - Bitterness
-  __coffee_b_acidity =__ Coffee B - Acidity
-  __coffee_b_personal_preference =__ Coffee B - Personal Preference
-    coffee_b_notes = Coffee B - Notes
-    coffee_c_bitterness = Coffee C - Bitterness
-    coffee_c_acidity = Coffee C - Acidity
-    coffee_c_personal_preference = Coffee C - Personal Preference
-    coffee_c_notes = Coffee C - Notes
-    coffee_d_bitterness = Coffee D - Bitterness
-    coffee_d_acidity = Coffee D - Acidity
-    coffee_d_personal_preference = Coffee D - Personal Preference
-    coffee_d_notes = Coffee D - Notes
-    prefer_abc = Between Coffee A, Coffee B, and Coffee C which did you prefer?
-    prefer_ad = Between Coffee A and Coffee D, which did you prefer?
-    prefer_overall = Lastly, what was your favorite overall coffee?
-    wfh = Do you work from home or in person?
-    total_spend = In total, how much money do you typically spend on coffee in a month?
-    why_drink = Why do you drink coffee?
-    why_drink_other = Other reason for drinking coffee
-    taste = Do you like the taste of coffee?
-    know_source = Do you know where your coffee comes from?
-    most_paid = What is the most you've ever paid for a cup of coffee?
-    most_willing = What is the most you'd ever be willing to pay for a cup of coffee?
-    value_cafe = Do you feel like you’re getting good value for your money when you buy coffee at a cafe?
-    spent_equipment = Approximately how much have you spent on coffee equipment in the past 5 years?
-    value_equipment = Do you feel like you’re getting good value for your money when you buy coffee at a cafe?
-    gender = Gender
-    gender_specify = Gender (please specify)
-    education_level = Education Level
-    ethnicity_race = Ethnicity/Race
-    ethnicity_race_specify = Ethnicity/Race (please specify)
-    employment_status = Employment Status
-    number_children = Number of Children
-    political_affiliation = Political Affiliation
+  * __expertise =__ Lastly, how would you rate your own coffee expertise?
+  * __coffee_a_bitterness =__ Coffee A - Bitterness
+  * __coffee_a_acidity =__ Coffee A - Acidity
+  * __coffee_a_personal_preference =__ Coffee A - Personal Preference
+  * __coffee_a_notes =__ Coffee A - Notes
+  * __coffee_b_bitterness =__ Coffee B - Bitterness
+  * __coffee_b_acidity =__ Coffee B - Acidity
+  * __coffee_b_personal_preference =__ Coffee B - Personal Preference
+  * __coffee_b_notes =__ Coffee B - Notes
+  * __coffee_c_bitterness =__ Coffee C - Bitterness
+  * __coffee_c_acidity =__ Coffee C - Acidity
+  * __coffee_c_personal_preference =__ Coffee C - Personal Preference
+  * __coffee_c_notes =__ Coffee C - Notes
+  * __coffee_d_bitterness =__ Coffee D - Bitterness
+  * __coffee_d_acidity =__ Coffee D - Acidity
+  * __coffee_d_personal_preference =__ Coffee D - Personal Preference
+  * __coffee_d_notes =__ Coffee D - Notes
+  * __prefer_abc =__ Between Coffee A, Coffee B, and Coffee C which did you prefer?
+  * __prefer_ad =__ Between Coffee A and Coffee D, which did you prefer?
+  * __prefer_overall =__ Lastly, what was your favorite overall coffee?
+  * __wfh =__ Do you work from home or in person?
+  * __total_spend =__ In total, how much money do you typically spend on coffee in a month?
+  * __why_drink =__ Why do you drink coffee?
+  * __why_drink_other =__ Other reason for drinking coffee
+  * __taste =__ Do you like the taste of coffee?
+  * __know_source =__ Do you know where your coffee comes from?
+  * __most_paid =__ What is the most you've ever paid for a cup of coffee?
+  * __most_willing =__ What is the most you'd ever be willing to pay for a cup of coffee?
+  * __value_cafe =__ Do you feel like you’re getting good value for your money when you buy coffee at a cafe?
+  * __spent_equipment =__ Approximately how much have you spent on coffee equipment in the past 5 years?
+  * __value_equipment =__ Do you feel like you’re getting good value for your money when you buy coffee at a cafe?
+  * __gender =__ Gender
+  * __gender_specify =__ Gender (please specify)
+  * __education_level =__ Education Level
+  * __ethnicity_race =__ Ethnicity/Race
+  * __ethnicity_race_specify =__ Ethnicity/Race (please specify)
+  * __employment_status =__ Employment Status
+  * __number_children =__ Number of Children
+  * __political_affiliation =__ Political Affiliation
