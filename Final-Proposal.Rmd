@@ -1,5 +1,80 @@
 ---
-title: "Final-Proposal"
-output: html_document
+title: "Final Proposal"
+author: "Emma Jay"
+date: "`r Sys.Date()`"
+output: github_document
 ---
 
+```{r setup}
+library(tidyverse)
+
+# set default theme for ggplot2
+ggplot2::theme_set(ggplot2::theme_minimal(base_size = 16))
+
+# set default figure parameters for knitr
+knitr::opts_chunk$set(
+  fig.width = 8,
+  fig.asp = 0.618,
+  fig.retina = 2,
+  dpi = 150, 
+  out.width = "70%"
+)
+```
+
+## The Dataset: The Great American Coffee Taste Test
+```{r data load and cleaning}
+# load data
+raw_coffee_data <- read_csv("data/coffee_survey.csv")
+glimpse(raw_coffee_data)
+
+# clean and organize columns
+coffee_data_clean <- raw_coffee_data %>%
+  mutate(across(where(is.character), ~na_if(., "NA"))) %>%
+  mutate(across(where(is.character), ~na_if(., "")))
+
+coffee_data_clean <- coffee_data_clean %>%
+  mutate(
+    total_spend = as.numeric(total_spend)) %>%
+  mutate(across(c
+                (political_affiliation, 
+                  education_level, 
+                  ethnicity_race, 
+                  gender, 
+                  employment_status,
+                  age,
+                  cups),
+                ~factor(.))) %>%
+  mutate(
+    brew = str_to_lower(brew),
+    where_drink = str_to_lower(where_drink))
+
+# remove predominately NA columns
+prop_missing <- sapply(coffee_data_clean, function(x) mean(is.na(x)))
+print(prop_missing)
+coffee_data_clean <- coffee_data_clean %>%
+  select(where(~mean(is.na(.)) < 0.9))
+
+# check dataset
+str(coffee_data_clean)
+head(coffee_data_clean)
+```
+### Description of Data
+
+## Research Question
+Are there significant differences in coffee consumption patterns between individuals of different political affiliations within the same education or ethnic group?
+
+## Graph 1
+```{r graph 1}
+
+```
+
+### Discussion of Graph 1 (200 words)
+
+## Draft Graph 2
+
+## Draft Graph 3
+
+## Draft Graph 4
+
+### Discussion of Graphs 2 - 4 (400ish)
+Along with these graphs, I would like to create a Shiny Dashboard that would allow a viewer to select specific education levels or ethnic groups that would update visualizations to be able to further explore the visualizations above. I explored this type of dashboard in Tableau, and I really enjoyed the interactive element it incorporated into the dashboard so I would like to incorporate something similar into my final project through Shiny. 
