@@ -8,6 +8,7 @@ output: github_document
 ```{r setup}
 library(tidyverse)
 library(plotly)
+library(ggmosaic)
 
 # set default theme for ggplot2
 ggplot2::theme_set(ggplot2::theme_minimal(base_size = 16))
@@ -68,6 +69,7 @@ coffee_data_clean <- coffee_data_clean %>%
 str(coffee_data_clean)
 head(coffee_data_clean)
 
+
 ```
 ### Description of Data
 
@@ -95,20 +97,46 @@ ggplotly(cups_poli_edu)
 
 ## Draft Graph 2
 ```{r cafe value politic ethnicity}
-ggplot(coffee_data_clean, aes(x = value_cafe, fill = political_affiliation)) +
-  geom_bar(position = "dodge") +
-  facet_wrap(~ ethnicity_race) +
+convert_most_paid <- function(value) {
+  case_when(
+    value == "Less than $2" ~ 1,
+    value == "More than $20" ~ 22,
+    TRUE ~ {
+      nums <- as.numeric(unlist(
+        str_extract_all(value, "[0-9]+")))
+      if (length(nums) == 2) {
+        mean(nums) 
+      } else {
+        NA_real_
+      }
+    }
+  )
+}
+coffee_data_clean <- coffee_data_clean %>%
+  mutate(most_paid_numeric = sapply(
+    most_paid, convert_most_paid))
+
+ggplot(coffee_data_clean, aes(
+  x = political_affiliation, 
+  y = most_paid_numeric, 
+  color = education_level)) +
+  geom_jitter(width = 0.2, alpha = 0.5) +
+  facet_wrap(~ ethnicity_race)
   labs(title = "Cafe Value for Money by Political Affiliation and Ethnicity",
-       x = "Value for Money at Cafe",
-       y = "Count",
-       fill = "Political Affiliation")
+       x = "Political Affiliation",
+       y = "Most Paid for Cup of Coffee",
+       fill = "Education Level")
+  
+  distinct(coffee_data_clean, most_paid)
 ```
 
 ## Draft Graph 3
 ```{r }
 distinct(coffee_data_clean, most_willing)
 
-ggplot(coffee_data_clean, aes(x = most_willing, fill = education_level)) +
+ggplot(coffee_data_clean, aes(
+  x = most_willing, 
+  fill = education_level)) +
   geom_bar(position = "dodge") +
   facet_wrap(~ political_affiliation) +
   labs(
@@ -119,7 +147,7 @@ ggplot(coffee_data_clean, aes(x = most_willing, fill = education_level)) +
   ) 
 ```
 
-## Draft Graph 4
-
-### Discussion of Graphs 2 - 4 (400ish)
+### Discussion of Graphs 2 - 3
 Along with these graphs, I would like to create a Shiny Dashboard that would allow a viewer to select specific education levels or ethnic groups that would update visualizations to be able to further explore the visualizations above. I explored this type of dashboard in Tableau, and I really enjoyed the interactive element it incorporated into the dashboard so I would like to incorporate something similar into my final project through Shiny. 
+
+I think in regards to the draft graphs 2 and 3, I need to figure out better spacing or text size for the x-axis as the current format is very difficult to read. I like the idea of faceting these graphs across political affiliation or ethnic group, but I think when I consider their placement into a dashboard, I will need to think more critically about having multiple faceted visualizations and potentially look to visualize in such a way that does not need to be faceted or accounts for the interaction of the user as a means of separating out the interactions expressed by faceting above. Further graphs will definetly explore other economic related variables, as I am really interested in pulling out trends related to political affiliation, ethnicity, education and the idea of value or willingness to pay for coffee products.  
