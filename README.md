@@ -2,6 +2,7 @@
 A repository containing my proposal for my final project in MACS40700. 
 
 ### Data Description
+This data set comes from World Champion Barista James Hoffmann and coffee company Cometeer, who in 2023, collected survey responses corresponding to around 5000 taste testing kits distributed across the country about coffee preferences. I downloaded the [data from Kaggle](https://www.kaggle.com/datasets/umerhaddii/the-great-american-coffee-taste-test-dataset). 
 
 ### Variables
 
